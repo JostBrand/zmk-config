@@ -109,11 +109,11 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&kp ESC            &kp N1          &kp N2          &kp N3       &kp N4            &kp N5                                 &kp N6               &kp N7             &kp N8       &kp N9           &kp N0           &kp HASH
-&td_left_brackets  &kp Q           &kp W           &kp F        &kp P             &kp B                                  &kp J                &kp L              &kp U        &kp Y            &kp P            &td_close_brackets
-&kp BACKSPACE      &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S  &mt LEFT_SHIFT T  &kp G                                  &kp M                &mt RIGHT_SHIFT N  &mt RCTRL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O  &kp SQT
-&kp LSHFT          &kp Z           &kp X           &kp C        &kp D             &kp V   &td_underscore    &lt 1 TAB    &mt RIGHT_ALT SLASH  &kp K              &kp H        &kp COMMA        &kp PERIOD       &mt RS(RSHIFT) BACKSLASH
-                                                   &none        &none             &none   &kp SPACE         &lt 2 ENTER  &mt RIGHT_ALT SLASH  &none              &none
+&kp ESC            &kp N1          &kp N2          &kp N3       &kp N4            &kp N5                                 &kp N6               &kp N7             &kp N8       &kp N9           &kp N0               &kp HASH
+&td_left_brackets  &kp Q           &kp W           &kp F        &kp P             &kp B                                  &kp J                &kp L              &kp U        &kp Y            &mt SEMICOLON COLON  &td_close_brackets
+&kp BACKSPACE      &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S  &mt LEFT_SHIFT T  &kp G                                  &kp M                &mt RIGHT_SHIFT N  &mt RCTRL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O      &kp SQT
+&kp LSHFT          &kp Z           &kp X           &kp C        &kp D             &kp V   &td_underscore    &lt 1 TAB    &mt RIGHT_ALT SLASH  &kp K              &kp H        &kp COMMA        &kp PERIOD           &mt RS(RSHIFT) BACKSLASH
+                                                   &mo 1        &none             &none   &kp SPACE         &lt 2 ENTER  &mt RIGHT_ALT SLASH  &none              &none
             >;
         };
 
@@ -132,8 +132,6 @@
 &trans      &kp PIPE      &ext_power EP_OFF  &ext_power EP_TOG  &trans        &trans        &trans    &trans  &trans     &kp MINUS  &kp KP_PLUS      &kp LBRC  &kp RBRC  &kp PIPE
                                              &trans             &trans        &trans        &trans    &trans  &trans     &trans     &trans
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         macros {
@@ -151,8 +149,6 @@
 &trans      &trans    &trans        &trans     &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
                                     &trans     &trans  &trans  &trans    &trans  &trans  &trans  &trans
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
 };
