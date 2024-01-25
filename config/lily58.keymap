@@ -12,7 +12,7 @@
 
 &mt {
     flavor = "tap-preferred";
-    tapping-term-ms = <285>;
+    tapping-term-ms = <220>;
 };
 
 / {
@@ -66,6 +66,11 @@
             bindings = <&to 0>;
             key-positions = <0 11>;
         };
+
+        quotes {
+            bindings = <&kp SINGLE_QUOTE>;
+            key-positions = <18 19>;
+        };
     };
 
     behaviors {
@@ -95,6 +100,13 @@
             #binding-cells = <0>;
             bindings = <&kp MINUS>, <&kp UNDER>;
         };
+
+        symbol_corner: symbol_corner {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SYMBOL_CORNER";
+            #binding-cells = <0>;
+            bindings = <&mt EQUAL SINGLE_QUOTE>, <&kp HASH>;
+        };
     };
 
     keymap {
@@ -109,11 +121,11 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&kp ESC            &kp N1          &kp N2          &kp N3       &kp N4            &kp N5                                 &kp N6               &kp N7             &kp N8       &kp N9           &kp N0               &kp HASH
-&td_left_brackets  &kp Q           &kp W           &kp F        &kp P             &kp B                                  &kp J                &kp L              &kp U        &kp Y            &mt SEMICOLON COLON  &td_close_brackets
-&kp BACKSPACE      &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S  &mt LEFT_SHIFT T  &kp G                                  &kp M                &mt RIGHT_SHIFT N  &mt RCTRL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O      &kp SQT
-&kp LSHFT          &kp Z           &kp X           &kp C        &kp D             &kp V   &td_underscore    &lt 1 TAB    &mt RIGHT_ALT SLASH  &kp K              &kp H        &kp COMMA        &kp PERIOD           &mt RS(RSHIFT) BACKSLASH
-                                                   &mo 1        &none             &none   &kp SPACE         &lt 2 ENTER  &mt RIGHT_ALT SLASH  &none              &none
+&kp ESC            &kp N1          &kp N2          &kp N3       &kp N4            &kp N5                                      &kp N6               &kp N7             &kp N8       &kp N9           &kp N0               &symbol_corner
+&td_left_brackets  &kp Q           &kp W           &kp F        &kp P             &kp B                                       &kp J                &kp L              &kp U        &kp Y            &mt SEMICOLON COLON  &td_close_brackets
+&kp BACKSPACE      &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S  &mt LEFT_SHIFT T  &kp G                                       &kp M                &mt RIGHT_SHIFT N  &mt RCTRL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O      &kp SQT
+&kp LSHFT          &kp Z           &kp X           &kp C        &kp D             &kp V        &td_underscore    &lt 1 TAB    &mt RIGHT_ALT SLASH  &kp K              &kp H        &kp COMMA        &kp PERIOD           &mt RS(RSHIFT) BACKSLASH
+                                                   &mo 1        &none             &key_repeat  &kp SPACE         &lt 2 ENTER  &mt RIGHT_ALT SLASH  &none              &none
             >;
         };
 
