@@ -12,7 +12,7 @@
 
 &mt {
     flavor = "tap-preferred";
-    tapping-term-ms = <285>;
+    tapping-term-ms = <220>;
 };
 
 / {
@@ -66,6 +66,11 @@
             bindings = <&to 0>;
             key-positions = <0 11>;
         };
+
+        quotes {
+            bindings = <&kp SINGLE_QUOTE>;
+            key-positions = <18 19>;
+        };
     };
 
     behaviors {
@@ -95,6 +100,13 @@
             #binding-cells = <0>;
             bindings = <&kp MINUS>, <&kp UNDER>;
         };
+
+        symbol_corner: symbol_corner {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SYMBOL_CORNER";
+            #binding-cells = <0>;
+            bindings = <&mt EQUAL SINGLE_QUOTE>, <&kp HASH>;
+        };
     };
 
     keymap {
@@ -109,11 +121,11 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&kp ESC            &kp N1          &kp N2          &kp N3       &kp N4            &kp N5                                 &kp N6               &kp N7             &kp N8       &kp N9           &kp N0           &kp HASH
-&td_left_brackets  &kp Q           &kp W           &kp F        &kp P             &kp B                                  &kp J                &kp L              &kp U        &kp Y            &kp P            &td_close_brackets
-&kp BACKSPACE      &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S  &mt LEFT_SHIFT T  &kp G                                  &kp M                &mt RIGHT_SHIFT N  &mt RCTRL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O  &kp SQT
-&kp LSHFT          &kp Z           &kp X           &kp C        &kp D             &kp V   &td_underscore    &lt 1 TAB    &mt RIGHT_ALT SLASH  &kp K              &kp H        &kp COMMA        &kp PERIOD       &mt RS(RSHIFT) BACKSLASH
-                                                   &none        &none             &none   &kp SPACE         &lt 2 ENTER  &mt RIGHT_ALT SLASH  &none              &none
+&kp ESC            &kp N1          &kp N2          &kp N3       &kp N4            &kp N5                                      &kp N6               &kp N7             &kp N8       &kp N9           &kp N0               &symbol_corner
+&td_left_brackets  &kp Q           &kp W           &kp F        &kp P             &kp B                                       &kp J                &kp L              &kp U        &kp Y            &mt SEMICOLON COLON  &td_close_brackets
+&kp BACKSPACE      &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S  &mt LEFT_SHIFT T  &kp G                                       &kp M                &mt RIGHT_SHIFT N  &mt RCTRL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O      &kp SQT
+&kp LSHFT          &kp Z           &kp X           &kp C        &kp D             &kp V        &td_underscore    &lt 1 TAB    &mt RIGHT_ALT SLASH  &kp K              &kp H        &kp COMMA        &kp PERIOD           &mt RS(RSHIFT) BACKSLASH
+                                                   &mo 1        &none             &key_repeat  &kp SPACE         &lt 2 ENTER  &mt RIGHT_ALT SLASH  &none              &none
             >;
         };
 
@@ -126,14 +138,12 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3  &bt BT_SEL 4                    &trans     &trans     &trans           &trans    &trans    &toggle_audio
-&kp F1      &kp F2        &kp F3             &kp F4             &kp F5        &kp F6                          &kp F7     &kp F8     &kp F9           &kp F10   &kp F11   &kp F12
-&kp GRAVE   &kp EXCL      &kp AT             &kp HASH           &kp DOLLAR    &kp PRCNT                       &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
-&trans      &kp PIPE      &ext_power EP_OFF  &ext_power EP_TOG  &trans        &trans        &trans    &trans  &trans     &kp MINUS  &kp KP_PLUS      &kp LBRC  &kp RBRC  &kp PIPE
-                                             &trans             &trans        &trans        &trans    &trans  &trans     &trans     &trans
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3  &bt BT_SEL 4                    &trans  &trans  &trans  &trans   &trans   &toggle_audio
+&kp F1      &kp F2        &kp F3             &kp F4             &kp F5        &kp F6                          &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
+&trans      &trans        &trans             &trans             &trans        &trans                          &trans  &trans  &trans  &trans   &trans   &trans
+&trans      &trans        &ext_power EP_OFF  &ext_power EP_TOG  &trans        &trans        &trans    &trans  &trans  &trans  &trans  &trans   &trans   &trans
+                                             &trans             &trans        &trans        &trans    &trans  &trans  &trans  &trans
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         macros {
@@ -145,14 +155,12 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&suspend    &trans    &trans        &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&kp GRAVE   &trans    &kp UP_ARROW  &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&kp DELETE  &kp LEFT  &kp DOWN      &kp RIGHT  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans      &trans    &trans        &trans     &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                                    &trans     &trans  &trans  &trans    &trans  &trans  &trans  &trans
+&suspend    &trans    &trans        &trans     &trans  &trans                    &trans     &trans             &trans  &trans  &trans  &trans
+&kp GRAVE   &trans    &kp UP_ARROW  &trans     &trans  &trans                    &kp EQUAL  &kp DOUBLE_QUOTES  &trans  &trans  &trans  &trans
+&kp DELETE  &kp LEFT  &kp DOWN      &kp RIGHT  &trans  &trans                    &trans     &trans             &trans  &trans  &trans  &trans
+&trans      &trans    &trans        &trans     &trans  &trans  &trans    &trans  &trans     &trans             &trans  &trans  &trans  &trans
+                                    &trans     &trans  &trans  &trans    &trans  &trans     &trans             &trans
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
 };
