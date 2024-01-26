@@ -8,22 +8,14 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/keys.h>
 
 &mt {
     flavor = "tap-preferred";
-    tapping-term-ms = <220>;
+    tapping-term-ms = <260>;
 };
 
 / {
     macros {
-        suspend: suspend {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kt LEFT_GUI &kp RET &kp LEFT_GUI &kp S &kp U &kp D &kp O &kp SPACE &kp P &kp M &kp MINUS &kp S &kp U &kp S &kp P &kp E &kp N &kp D &kp LEFT_GUI>;
-            label = "SUSPEND";
-        };
-
         equal_greater_than: equal_greater_than {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -52,6 +44,19 @@
 
             label = "TOGGLE_AUDIO";
         };
+
+        suspend: suspend {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LEFT_GUI>,
+                <&macro_press>,
+                <&kp RET>,
+                <&macro_tap>,
+                <&kp S &kp U &kp D &kp O &kp SPACE &kp P &kp M &kp MINUS &kp S &kp U &kp S &kp P &kp E &kp N &kp D &kp RET>;
+
+            label = "SUSPEND";
+        };
     };
 
     combos {
@@ -68,8 +73,13 @@
         };
 
         quotes {
-            bindings = <&kp SINGLE_QUOTE>;
+            bindings = <&kp DOUBLE_QUOTES>;
             key-positions = <18 19>;
+        };
+
+        alt_equal {
+            bindings = <&kp EQUAL>;
+            key-positions = <16 17>;
         };
     };
 
@@ -78,20 +88,14 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TD_LEFT_BRACKETS";
             #binding-cells = <0>;
-            bindings =
-                <&kp LEFT_PARENTHESIS>,
-                <&kp LEFT_BRACKET>,
-                <&kp LEFT_BRACE>;
+            bindings = <&mt LEFT_BRACE LEFT_PARENTHESIS>, <&kp LEFT_BRACKET>;
         };
 
         td_close_brackets: td_close_brackets {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_CLOSE_BRACKETS";
             #binding-cells = <0>;
-            bindings =
-                <&kp RIGHT_PARENTHESIS>,
-                <&kp RIGHT_BRACKET>,
-                <&kp RIGHT_BRACE>;
+            bindings = <&mt RIGHT_BRACE RIGHT_PARENTHESIS>, <&kp RIGHT_BRACKET>;
         };
 
         td_underscore: td_underscore {
@@ -105,7 +109,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "SYMBOL_CORNER";
             #binding-cells = <0>;
-            bindings = <&mt EQUAL SINGLE_QUOTE>, <&kp HASH>;
+            bindings = <&mt EQUAL DOUBLE_QUOTES>, <&kp HASH>;
         };
     };
 
@@ -121,11 +125,11 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&kp ESC            &kp N1          &kp N2          &kp N3       &kp N4            &kp N5                                      &kp N6               &kp N7             &kp N8       &kp N9           &kp N0               &symbol_corner
-&td_left_brackets  &kp Q           &kp W           &kp F        &kp P             &kp B                                       &kp J                &kp L              &kp U        &kp Y            &mt SEMICOLON COLON  &td_close_brackets
-&kp BACKSPACE      &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S  &mt LEFT_SHIFT T  &kp G                                       &kp M                &mt RIGHT_SHIFT N  &mt RCTRL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O      &kp SQT
-&kp LSHFT          &kp Z           &kp X           &kp C        &kp D             &kp V        &td_underscore    &lt 1 TAB    &mt RIGHT_ALT SLASH  &kp K              &kp H        &kp COMMA        &kp PERIOD           &mt RS(RSHIFT) BACKSLASH
-                                                   &mo 1        &none             &key_repeat  &kp SPACE         &lt 2 ENTER  &mt RIGHT_ALT SLASH  &none              &none
+&mt TILDE ESCAPE   &mt EXCL NUMBER_1  &mt AT N2       &mt HASH N3  &mt DOLLAR N4     &mt PERCENT N5                                 &kp N6               &mt AMPERSAND N7   &mt STAR N8  &kp N9           &kp N0               &symbol_corner
+&td_left_brackets  &kp Q              &kp W           &kp F        &kp P             &kp B                                          &kp J                &kp L              &kp U        &kp Y            &mt SEMICOLON COLON  &td_close_brackets
+&kp BACKSPACE      &mt LEFT_GUI A     &mt LEFT_ALT R  &mt LCTRL S  &mt LEFT_SHIFT T  &kp G                                          &kp M                &mt RIGHT_SHIFT N  &mt RCTRL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O      &kp SQT
+&kp LSHFT          &kp Z              &kp X           &kp C        &kp D             &kp V           &td_underscore    &lt 1 TAB    &mt RIGHT_ALT SLASH  &kp K              &kp H        &kp COMMA        &kp PERIOD           &mt RS(RSHIFT) BACKSLASH
+                                                      &to 1        &to 2             &key_repeat     &kp SPACE         &lt 2 ENTER  &mt RIGHT_ALT SLASH  &none              &none
             >;
         };
 
@@ -138,11 +142,11 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3  &bt BT_SEL 4                    &trans  &trans  &trans  &trans   &trans   &toggle_audio
-&kp F1      &kp F2        &kp F3             &kp F4             &kp F5        &kp F6                          &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
-&trans      &trans        &trans             &trans             &trans        &trans                          &trans  &trans  &trans  &trans   &trans   &trans
-&trans      &trans        &ext_power EP_OFF  &ext_power EP_TOG  &trans        &trans        &trans    &trans  &trans  &trans  &trans  &trans   &trans   &trans
-                                             &trans             &trans        &trans        &trans    &trans  &trans  &trans  &trans
+&bt BT_CLR         &bt BT_SEL 0  &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3  &bt BT_SEL 4                    &trans  &trans  &trans  &trans  &trans  &toggle_audio
+&trans             &trans        &trans             &trans             &trans        &trans                          &trans  &trans  &trans  &trans  &trans  &trans
+&kp LC(BACKSPACE)  &trans        &trans             &trans             &trans        &trans                          &trans  &trans  &trans  &trans  &trans  &trans
+&trans             &trans        &ext_power EP_OFF  &ext_power EP_TOG  &trans        &trans        &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                                    &trans             &trans        &trans        &trans    &trans  &trans  &trans  &trans
             >;
         };
 
@@ -155,10 +159,10 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&suspend    &trans    &trans        &trans     &trans  &trans                    &trans     &trans             &trans  &trans  &trans  &trans
-&kp GRAVE   &trans    &kp UP_ARROW  &trans     &trans  &trans                    &kp EQUAL  &kp DOUBLE_QUOTES  &trans  &trans  &trans  &trans
-&kp DELETE  &kp LEFT  &kp DOWN      &kp RIGHT  &trans  &trans                    &trans     &trans             &trans  &trans  &trans  &trans
-&trans      &trans    &trans        &trans     &trans  &trans  &trans    &trans  &trans     &trans             &trans  &trans  &trans  &trans
+&suspend    &kp F1    &kp F2        &kp F3     &kp F4  &kp F5                    &kp F6     &kp F7             &kp F8  &kp F9  &kp F10  &trans
+&kp GRAVE   &trans    &kp UP_ARROW  &trans     &trans  &trans                    &kp EQUAL  &kp DOUBLE_QUOTES  &trans  &trans  &trans   &kp F11
+&kp DELETE  &kp LEFT  &kp DOWN      &kp RIGHT  &trans  &trans                    &trans     &kp H              &kp J   &kp K   &kp L    &kp F12
+&trans      &kp PIPE  &trans        &trans     &trans  &trans  &trans    &trans  &trans     &trans             &trans  &trans  &trans   &trans
                                     &trans     &trans  &trans  &trans    &trans  &trans     &trans             &trans
             >;
         };
