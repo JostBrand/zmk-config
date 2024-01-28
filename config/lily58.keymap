@@ -95,7 +95,7 @@
 
         capsw {
             bindings = <&caps_word>;
-            key-positions = <24 36>;
+            key-positions = <36 37>;
         };
     };
 
@@ -158,11 +158,11 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&trans             &trans         &trans       &trans          &trans            &trans                      &trans         &trans                &trans                 &trans             &trans           &toggle_audio
-&trans             &kp HASH       &kp PERCENT  &kp LESS_THAN   &kp GREATER_THAN  &kp PIPE                    &double_colon  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp GRAVE          &trans           &trans
-&kp LC(BACKSPACE)  &kp CARET      &kp EQUAL    &kp UNDERSCORE  &kp DOLLAR        &kp STAR                    &kp PLUS       &kp LEFT_BRACE        &kp LEFT_BRACKET       &kp RIGHT_BRACKET  &kp RIGHT_BRACE  &trans
-&trans             &kp BACKSLASH  &trans       &trans          &trans            &trans    &trans    &trans  &trans         &trans                &trans                 &trans             &trans           &trans
-                                               &trans          &trans            &trans    &trans    &trans  &trans         &trans                &trans
+&trans             &trans              &trans              &trans                &trans                 &trans                              &trans             &trans                            &trans                       &trans                      &trans                      &toggle_audio
+&trans             &kp HASH            &kp PERCENT         &kp LESS_THAN         &kp GREATER_THAN       &kp PIPE                            &double_colon      &kp LEFT_BRACE                    &kp RIGHT_BRACE              &kp GRAVE                   &trans                      &trans
+&kp LC(BACKSPACE)  &mt LEFT_GUI CARET  &mt LEFT_ALT EQUAL  &mt LCTRL UNDERSCORE  &mt LEFT_SHIFT DOLLAR  &kp STAR                            &kp PLUS           &mt RIGHT_SHIFT LEFT_PARENTHESIS  &mt RCTRL RIGHT_PARENTHESIS  &mt RIGHT_ALT LEFT_BRACKET  &mt LEFT_GUI RIGHT_BRACKET  &trans
+&trans             &kp BACKSLASH       &trans              &trans                &trans                 &kp SINGLE_QUOTE  &trans    &trans  &kp DOUBLE_QUOTES  &trans                            &trans                       &trans                      &trans                      &trans
+                                                           &trans                &trans                 &trans            &trans    &trans  &trans             &trans                            &trans
             >;
         };
 
