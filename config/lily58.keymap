@@ -10,7 +10,7 @@
 
 &mt {
     flavor = "tap-preferred";
-    tapping-term-ms = <260>;
+    tapping-term-ms = <270>;
 };
 
 / {
@@ -44,24 +44,45 @@
             label = "TOGGLE_AUDIO";
         };
 
-        suspend: suspend {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&kp LEFT_GUI>,
-                <&macro_press>,
-                <&kp RET>,
-                <&macro_tap>,
-                <&kp S &kp U &kp D &kp O &kp SPACE &kp P &kp M &kp MINUS &kp S &kp U &kp S &kp P &kp E &kp N &kp D &kp RET>;
-
-            label = "SUSPEND";
-        };
-
         double_colon: double_colon {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp COLON &kp COLON>;
             label = "DOUBLE_COLON";
+        };
+
+        excel_edit: excel_edit {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp F2 &kp LC(A) &kp LC(V)>;
+            label = "EXCEL_EDIT";
+        };
+
+        double_eq: double_eq {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL &kp EQUAL>;
+            label = "DOUBLE_EQ";
+        };
+
+        unequal: unequal {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp EXCLAMATION &kp EQUAL>;
+            label = "UNEQUAL";
+        };
+
+        closeSaveVim: closeSaveVim {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_SHIFT>,
+                <&macro_press>,
+                <&kp Z &kp Z>,
+                <&macro_release>;
+
+            label = "CLOSESAVEVIM";
         };
     };
 
@@ -96,6 +117,11 @@
         capsw {
             bindings = <&caps_word>;
             key-positions = <36 37>;
+        };
+
+        CloseSaveVim {
+            bindings = <&closeSaveVim>;
+            key-positions = <0 1>;
         };
     };
 
@@ -159,9 +185,9 @@
 
             bindings = <
 &trans             &trans              &trans              &trans                &trans                 &trans                              &trans             &trans                            &trans                       &trans                      &trans                      &toggle_audio
-&trans             &kp HASH            &kp PERCENT         &kp LESS_THAN         &kp GREATER_THAN       &kp PIPE                            &double_colon      &kp LEFT_BRACE                    &kp RIGHT_BRACE              &kp GRAVE                   &trans                      &trans
+&trans             &kp HASH            &kp PERCENT         &kp LESS_THAN         &kp GREATER_THAN       &double_eq                          &unequal           &kp LEFT_BRACE                    &kp RIGHT_BRACE              &kp GRAVE                   &double_colon               &trans
 &kp LC(BACKSPACE)  &mt LEFT_GUI CARET  &mt LEFT_ALT EQUAL  &mt LCTRL UNDERSCORE  &mt LEFT_SHIFT DOLLAR  &kp STAR                            &kp PLUS           &mt RIGHT_SHIFT LEFT_PARENTHESIS  &mt RCTRL RIGHT_PARENTHESIS  &mt RIGHT_ALT LEFT_BRACKET  &mt LEFT_GUI RIGHT_BRACKET  &trans
-&trans             &kp BACKSLASH       &trans              &trans                &trans                 &kp SINGLE_QUOTE  &trans    &trans  &kp DOUBLE_QUOTES  &trans                            &trans                       &trans                      &trans                      &trans
+&trans             &kp BACKSLASH       &kp PIPE            &trans                &trans                 &kp SINGLE_QUOTE  &trans    &trans  &kp DOUBLE_QUOTES  &trans                            &trans                       &trans                      &trans                      &trans
                                                            &trans                &trans                 &trans            &trans    &trans  &trans             &trans                            &trans
             >;
         };
@@ -175,11 +201,11 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&suspend    &kp F1        &kp F2        &kp F3                 &kp F4        &kp F5                               &kp F6         &kp F7           &kp F8        &kp F9      &kp F10        &trans
-&trans      &trans        &kp UP_ARROW  &kp C_AL_FILE_BROWSER  &kp C_AL_WWW  &kp C_AL_IM                          &kp K_REDO     &kp K_COPY       &kp K_PASTE   &kp K_UNDO  &kp C_AC_FIND  &kp F11
-&kp DELETE  &kp LEFT      &kp DOWN      &kp RIGHT              &kp C_AL_DB   &kp C_AL_CALENDAR                    &kp LC(LS(O))  &kp H            &kp J         &kp K       &kp L          &kp F12
-&trans      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2           &bt BT_SEL 3  &bt BT_SEL 4       &trans    &trans  &kp LS(LC(M))  &kp C_VOLUME_UP  &kp C_VOL_DN  &kp K_MUTE  &trans         &trans
-                                        &trans                 &bt BT_CLR    &trans             &trans    &trans  &trans         &trans           &trans
+&trans      &kp F1        &kp F2        &kp F3        &kp F4        &kp F5                          &kp F6         &kp F7  &kp F8  &kp F9  &kp F10  &trans
+&trans      &trans        &kp UP_ARROW  &excel_edit   &trans        &trans                          &trans         &trans  &trans  &trans  &trans   &kp F11
+&kp DELETE  &kp LEFT      &kp DOWN      &kp RIGHT     &trans        &trans                          &kp LC(LS(O))  &kp H   &kp J   &kp K   &kp L    &kp F12
+&trans      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans    &trans  &kp LS(LC(M))  &trans  &trans  &trans  &trans   &trans
+                                        &trans        &bt BT_CLR    &trans        &trans    &trans  &trans         &trans  &trans
             >;
         };
     };
