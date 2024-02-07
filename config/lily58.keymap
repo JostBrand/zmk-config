@@ -109,7 +109,7 @@
         };
 
         bt {
-            bindings = <&tog 3>;
+            bindings = <&to 3>;
             key-positions = <0 1 2>;
         };
     };
