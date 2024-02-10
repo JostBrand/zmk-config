@@ -50,47 +50,14 @@
             bindings = <&kp F2 &kp LC(A) &kp LC(V)>;
             label = "EXCEL_EDIT";
         };
-
-        closeSaveVim: closeSaveVim {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LEFT_SHIFT>,
-                <&macro_press>,
-                <&kp Z &kp Z>,
-                <&macro_release>;
-
-            label = "CLOSESAVEVIM";
-        };
     };
 
     combos {
         compatible = "zmk,combos";
 
-        alt_enter {
-            bindings = <&kp RET>;
-            key-positions = <15 16>;
-        };
-
         panic_to_default_layer {
             bindings = <&to 0>;
             key-positions = <0 11>;
-        };
-
-        quotes {
-            bindings = <&kp DOUBLE_QUOTES>;
-            key-positions = <18 19>;
-        };
-
-        capsw {
-            bindings = <&caps_word>;
-            key-positions = <36 37>;
-        };
-
-        CloseSaveVim {
-            bindings = <&closeSaveVim>;
-            key-positions = <0 1>;
         };
 
         cut {
@@ -111,6 +78,16 @@
         bt {
             bindings = <&to 3>;
             key-positions = <0 1 2>;
+        };
+
+        easy_q {
+            bindings = <&kp Q>;
+            key-positions = <14 15>;
+        };
+
+        easy_colon {
+            bindings = <&kp COLON>;
+            key-positions = <20 21>;
         };
     };
 
