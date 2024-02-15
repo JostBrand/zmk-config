@@ -151,8 +151,8 @@
 
             bindings = <
 &none              &none               &none               &none                 &none                  &none                               &none              &none                             &none                        &none                       &none                       &toggle_audio
-&none              &kp HASH            &kp PERCENT         &kp LESS_THAN         &kp GREATER_THAN       &kp TILDE                           &kp MINUS          &kp LEFT_BRACE                    &kp RIGHT_BRACE              &kp GRAVE                   &double_colon               &none
-&kp LC(BACKSPACE)  &mt LEFT_GUI CARET  &mt LEFT_ALT EQUAL  &mt LCTRL UNDERSCORE  &mt LEFT_SHIFT DOLLAR  &kp STAR                            &kp PLUS           &mt RIGHT_SHIFT LEFT_PARENTHESIS  &mt RCTRL RIGHT_PARENTHESIS  &mt RIGHT_ALT LEFT_BRACKET  &mt LEFT_GUI RIGHT_BRACKET  &none
+&kp LC(BACKSPACE)  &kp HASH            &kp PERCENT         &kp LESS_THAN         &kp GREATER_THAN       &kp TILDE                           &kp MINUS          &kp LEFT_BRACE                    &kp RIGHT_BRACE              &kp GRAVE                   &double_colon               &none
+&kp DELETE         &mt LEFT_GUI CARET  &mt LEFT_ALT EQUAL  &mt LCTRL UNDERSCORE  &mt LEFT_SHIFT DOLLAR  &kp STAR                            &kp PLUS           &mt RIGHT_SHIFT LEFT_PARENTHESIS  &mt RCTRL RIGHT_PARENTHESIS  &mt RIGHT_ALT LEFT_BRACKET  &mt LEFT_GUI RIGHT_BRACKET  &none
 &to 1              &kp BACKSLASH       &kp PIPE            &kp PERCENT           &kp AT                 &kp SINGLE_QUOTE  &to 0     &trans  &kp DOUBLE_QUOTES  &kp EXCL                          &kp AMPERSAND                &kp UNDER                   &kp SLASH                   &none
                                                            &none                 &none                  &none             &trans    &trans  &none              &none                             &none
             >;
@@ -168,8 +168,8 @@
 
             bindings = <
 &trans             &kp F1           &kp F2        &kp F3       &kp F4  &kp F5                    &kp F6         &kp F7     &kp F8    &kp F9  &kp F10  &trans
-&trans             &kp LS(LC(TAB))  &kp UP_ARROW  &kp LC(TAB)  &trans  &trans                    &kp AT         &kp COLON  &kp SEMI  &trans  &trans   &kp F11
-&kp LC(BACKSPACE)  &kp LEFT         &kp DOWN      &kp RIGHT    &trans  &trans                    &kp LC(LS(O))  &none      &none     &none   &none    &kp F12
+&kp LC(BACKSPACE)  &kp LS(LC(TAB))  &kp UP_ARROW  &kp LC(TAB)  &trans  &trans                    &kp AT         &kp COLON  &kp SEMI  &trans  &trans   &kp F11
+&kp DEL            &kp LEFT         &kp DOWN      &kp RIGHT    &trans  &trans                    &kp LC(LS(O))  &none      &none     &none   &none    &kp F12
 &to 2              &trans           &kp LC(W)     &trans       &trans  &trans  &to 0     &trans  &kp LS(LC(M))  &trans     &trans    &trans  &trans   &trans
                                                   &trans       &none   &trans  &trans    &trans  &trans         &trans     &to 3
             >;
